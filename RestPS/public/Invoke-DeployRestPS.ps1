@@ -27,6 +27,7 @@ function Invoke-DeployRestPS
     try
     {
         # Setup the local File directories
+        #TODO: ensure no trailing slashes on $LocalDir
         if (Test-Path -Path "$LocalDir")
         {
             Write-Log -LogFile $Logfile -LogLevel $logLevel -MsgType INFO -Message "Invoke-DeployRestPS: Directory: $localDir, exists."
@@ -44,8 +45,9 @@ function Invoke-DeployRestPS
             New-Item -Path "$LocalDir/endpoints/DELETE" -ItemType Directory
         }
         # Move Example files to the Local Directory
-        $RoutesFileSource = $SourceDir + "/endpoints/RestPSRoutes.json"
+        $RoutesFileSource = $SourceDir + "/endpoints/RestPSRoutes.json" 
         Copy-Item -Path "$RoutesFileSource" -Destination "$LocalDir/endpoints" -Confirm:$false -Force
+        #TODO: Replace path to executables automatically c:/RestPS/ to $LocalDir/ on destination (Get-Content / Set-Content)
         $GetRoutesFileSource = $SourceDir + "/endpoints/GET/Invoke-GetRoutes.ps1"
         Copy-Item -Path $GetRoutesFileSource -Destination "$LocalDir/endpoints/GET" -Confirm:$false -Force
         $EndpointVerbs = @("GET", "POST", "PUT", "DELETE")

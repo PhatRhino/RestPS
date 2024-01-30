@@ -24,5 +24,6 @@ function Import-RouteSet
     else
     {
         Throw "Import-RouteSet - Could not validate Path $RoutesFilePath"
+        #TODO: Stop Listener if no file present...
     }
 }
