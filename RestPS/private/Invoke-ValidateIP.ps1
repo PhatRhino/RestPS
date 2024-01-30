@@ -21,6 +21,7 @@ function Invoke-ValidateIP
     if ($VerifyClientIP -eq $true)
     {
         . $RestPSLocalRoot\bin\Get-RestIPAuth.ps1
+        #TODO: Update Functionality for Single IPs and Network CIDR Notations
         $RestIPAuth = (Get-RestIPAuth).UserIP
         $RequesterIP = $script:Request.RemoteEndPoint
         if ($null -ne $RestIPAuth)
