@@ -45,7 +45,7 @@ function Invoke-DeployRestPS
             New-Item -Path "$LocalDir/endpoints/DELETE" -ItemType Directory
         }
         # Move Example files to the Local Directory
-        $RoutesFileSource = $SourceDir + "/endpoints/RestPSRoutes.json" 
+        $RoutesFileSource = $SourceDir + "/endpoints/RestPSRoutes.json"
         Copy-Item -Path "$RoutesFileSource" -Destination "$LocalDir/endpoints" -Confirm:$false -Force
         #TODO: Replace path to executables automatically c:/RestPS/ to $LocalDir/ on destination (Get-Content / Set-Content)
         $GetRoutesFileSource = $SourceDir + "/endpoints/GET/Invoke-GetRoutes.ps1"
